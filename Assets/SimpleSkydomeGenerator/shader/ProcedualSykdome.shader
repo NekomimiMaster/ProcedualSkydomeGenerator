@@ -11,8 +11,8 @@
 	    _Brightness("Brightness", Range(-1.0, 1.0)) = 0.0
 
         //雲のUV
-        _uvX ("uv X", Range(1.0, 20.0)) = 10.0
-        _uvY ("uv Y", Range(1.0, 20.0)) = 10.0
+        _uvX ("uv X", Range(1.0, 20.0)) = 5.0
+        _uvY ("uv Y", Range(1.0, 20.0)) = 5.0
         //雲の高さ
         _CloudHeight ("Cloud Height", Range(1.0, 10.0)) = 5.0
         //雲の色
