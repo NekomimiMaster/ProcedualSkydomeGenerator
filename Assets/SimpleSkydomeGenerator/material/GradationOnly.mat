@@ -21,8 +21,11 @@ Material:
     m_Floats:
     - _BlueValue: 1
     - _Brightness: 0
+    - _CloudHeight: 5
     - _CullMode: 2
-    - _GradationShift: -0.073529415
     - _GreenValue: 0.6
     - _RedValue: 0
-    m_Colors: []
+    - _uvX: 5
+    - _uvY: 5
+    m_Colors:
+    - _CloudColor: {r: 1, g: 1, b: 1, a: 1}
