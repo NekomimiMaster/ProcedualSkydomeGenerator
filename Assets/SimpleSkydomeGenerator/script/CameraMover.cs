@@ -8,7 +8,7 @@ namespace SimpleSkydomeGenerator
     {
         //カメラ移動のスピード(ローカル)
         [SerializeField,Range(0.1f, 10.0f)]
-        private float _camSpeedLocal = 4.0f;
+        private float _camSpeedLocal = 6.0f;
 
         //カメラ操作の有効無効
         [SerializeField]

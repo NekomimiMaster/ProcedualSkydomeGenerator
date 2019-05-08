@@ -15,6 +15,8 @@
         _uvY ("uv Y", Range(1.0, 20.0)) = 5.0
         //雲の高さ
         _CloudHeight ("Cloud Height", Range(1.0, 10.0)) = 5.0
+        //雲の濃さ
+        _CloudBrightness ("Cloud Brightness", Range(0, 1.5)) = 1.0
         //雲の色
         _CloudColor ("Cloud Color", Color) = (1.0, 1.0, 1.0, 1.0)
 	    
@@ -48,6 +50,7 @@
 	        float _uvX;
 	        float _uvY;
 	        float _CloudHeight;
+	        float _CloudBrightness;
 	        fixed4 _CloudColor;
 
             struct VertexInput {
@@ -88,7 +91,7 @@
                 fixed4 sky = fixed4(r, g, b, 1);
                 
                 //空と雲をノイズで合成
-                fixed4 fix = lerp(sky, _CloudColor, fbm);
+                fixed4 fix = lerp(sky, _CloudColor, fbm * _CloudBrightness);
                 
                 return fix;       
             }

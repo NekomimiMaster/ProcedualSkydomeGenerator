@@ -12,8 +12,8 @@ fixed2 randomF2F2(fixed2 uv)
 
 float PerlinNoise(fixed2 i)
 {
-    fixed2 uv = frac(i); //グリッド(整数部を取り出す)
-    fixed2 grid = floor(i); //グリッド内UV(少数部を取り出す)
+    fixed2 uv = frac(i); //グリッド内UV(少数部を取り出す)
+    fixed2 grid = floor(i); //グリッド(整数部を取り出す)
     fixed2 u = uv * uv * (3.0 - 2.0 * uv); //SmoothStep()
     
     //グリッドを引数にしてランダムを得る

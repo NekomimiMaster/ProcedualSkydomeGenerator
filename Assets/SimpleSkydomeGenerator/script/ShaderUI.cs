@@ -29,10 +29,11 @@ namespace SimpleSkydomeGenerator
         //UV タイリング
         private float _uvX = 5.0f;
         private float _uvY = 5.0f;
-        
         //雲の高さ
         private float _cloudHeight = 5.0f;
-
+        //雲の濃度
+        private float _cloudBrightness = 1.0f;
+        
         void Update()
         {
             SetShaderProperty();
@@ -59,6 +60,9 @@ namespace SimpleSkydomeGenerator
             _targetShader.SetFloat("_uvY", _uvY);
             //雲の高さ
             _targetShader.SetFloat("_CloudHeight", _cloudHeight);
+            //雲の濃度
+            _targetShader.SetFloat("_CloudBrightness", _cloudBrightness);
+ 
         }
 
         void OnGUI()
@@ -83,9 +87,13 @@ namespace SimpleSkydomeGenerator
             GUI.Label(new Rect(10, 135, 100, 20), "縦 密度");
             _uvY = GUI.HorizontalSlider(new Rect(_sliderOffset, 170, _sliderWidth, 20), _uvY, 1.0f, 20.0f);
             GUI.Label(new Rect(10, 165, 100, 20), "横 密度");
-            
+            //雲の高さ
             _cloudHeight = GUI.HorizontalSlider(new Rect(_sliderOffset, 200, _sliderWidth, 20), _cloudHeight, 1.0f, 10.0f);
             GUI.Label(new Rect(10, 195, 100, 20), "雲 高さ");
+            //雲の濃度
+            _cloudBrightness = GUI.HorizontalSlider(new Rect(_sliderOffset, 230, _sliderWidth, 20), _cloudBrightness, 0, 1.5f);
+            GUI.Label(new Rect(10, 225, 100, 20), "雲 濃度");
+            
         }
     }
 

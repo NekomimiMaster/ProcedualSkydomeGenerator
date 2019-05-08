@@ -19,13 +19,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _BlueValue: 1
-    - _Brightness: 0
-    - _CloudHeight: 4.735294
+    - _BlueValue: 0.0735294
+    - _Brightness: 0.20588236
+    - _CloudBrightness: 0.8455882
+    - _CloudHeight: 3.382353
     - _CullMode: 2
-    - _GreenValue: 0.6
-    - _RedValue: 0
-    - _uvX: 9.1029415
-    - _uvY: 16.926472
+    - _GreenValue: 0.5441176
+    - _RedValue: 0.9117647
+    - _uvX: 11.617647
+    - _uvY: 18.602942
     m_Colors:
     - _CloudColor: {r: 1, g: 1, b: 1, a: 1}
