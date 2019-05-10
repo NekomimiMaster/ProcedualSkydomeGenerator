@@ -21,8 +21,8 @@ namespace SimpleSkydomeGenerator
         [SerializeField, Tooltip("Trueならタイムスタンプが付きます")]
         private bool _useTimeStamp = false;
 
-        //保存先
-        private string _filePath = "Assets/SimpleSkydomeGenerator/texture/";
+        //保存先(末尾に/が必要)
+        private string _filePath = "Assets/SimpleSkydomeGenerator/generateTex/";
 
         private bool _uiMessageActiv = false;
 
@@ -61,7 +61,7 @@ namespace SimpleSkydomeGenerator
 
             //書き出し処理
             System.IO.File.WriteAllBytes(fullpath, bytes);
-            Debug.Log("Create : " + fullpath);
+            Debug.Log("テクスチャ保存先 : " + fullpath);
             AssetDatabase.Refresh();
             StartCoroutine(DisplayUiMessage());
         }

@@ -1,4 +1,4 @@
-﻿Shader "Unlit/ProcedualSykdome"
+﻿Shader "Generator/ProcedualSykdome"
 {
 	Properties
 	{
@@ -9,6 +9,9 @@
 	    
 	    //明るさ
 	    _Brightness("Brightness", Range(-1.0, 1.0)) = 0.0
+	    
+	    //雲のSEED
+	    _Seed ("Random Seed", Range(1.0, 100.0)) = 1.0
 
         //雲のUV
         _uvX ("uv X", Range(1.0, 20.0)) = 5.0
@@ -21,7 +24,7 @@
         _CloudColor ("Cloud Color", Color) = (1.0, 1.0, 1.0, 1.0)
 	    
 	    // 0:OFF(両面) 1:Front(裏面表示) 2:Back(表面表示)
-	    _CullMode ("Cull Mode", Float) = 2.0
+	    _CullMode ("Cull Mode", float) = 2.0
 	}
 	
     SubShader
@@ -47,6 +50,7 @@
 	        float _GreenValue;
 	        float _BlueValue;
 	        float _Brightness;
+	        int _Seed;
 	        float _uvX;
 	        float _uvY;
 	        float _CloudHeight;
@@ -75,14 +79,16 @@
             {
                 //UVをタイリングする
                 fixed2 tiling = fixed2(o.uv.x * _uvX, o.uv.y * _uvY);
-                float fbm = fBm(tiling);
+                tiling.x = abs( tiling.x - (_uvX / 2.0) );
+                float fbm = fBm(tiling, _Seed);
                 
-                //ノイズをマスクする
-                float mask = clamp(0, 1, 10.0 - o.uv.x * 10.0) * step(0.1, o.uv.x);
-                mask = mask + clamp(0, 1, o.uv.x * 10.0) * step(0.1, 1 - o.uv.x);
-                fbm = fbm * clamp(0, 1, mask);
+                //ノイズマスク X方向
+                // float mask = clamp(0, 1, 10.0 - o.uv.x * 10.0) * step(0.1, o.uv.x);
+                // mask = mask + clamp(0, 1, o.uv.x * 10.0) * step(0.1, 1 - o.uv.x);
+                // fbm = fbm * clamp(0, 1, mask);
+                //ノイズマスク Y方向
                 fbm = fbm * clamp(0, 1, _CloudHeight - o.uv.y * _CloudHeight);
-            
+                
                 //UV.y × _Brightness
                 float y = o.uv.y * _Brightness;
                 float r = y + _RedValue;
